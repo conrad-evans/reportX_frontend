@@ -24,7 +24,12 @@ form.addEventListener("submit", (e) => {
     };
     fetch(url, fetchData)
       .then((res) => res.json())
-      .then((data) => console.log(data))
+      .then((data) => {
+        if (data.status === 200) {
+          console.log(data)
+          localStorage.setItem("x-auth-token", data.data.token);
+        }
+      })
       .catch((error) => console.log(error));
   }
 });

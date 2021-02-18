@@ -12,7 +12,6 @@ const confirmPassword = document.getElementById("confirm-password");
 
 form.addEventListener("submit", (e) => {
   e.preventDefault();
-  console.log(password.value.length);
 
   checkEmail(email);
   checkPasswordLength(password, 8, 30);
@@ -24,17 +23,23 @@ form.addEventListener("submit", (e) => {
     const data = {
       email: email.value,
       password: password.value,
-      confirmPassword: confirmPassword.value
+      confirmPassword: confirmPassword.value,
     };
     const fetchData = {
       method: "POST",
       body: JSON.stringify(data),
       headers: {
-        "Content-type": "application/json"}
+        "Content-type": "application/json",
+      },
     };
     fetch(url, fetchData)
       .then((res) => res.json())
-      .then((data) => console.log(data))
+      .then((data) => {
+        console.log(data)
+        if (data.status === 200) {
+          localStorage.setItem("x-auth-token", data.data.token);
+        }
+      })
       .catch((error) => console.log(error));
   }
 });
