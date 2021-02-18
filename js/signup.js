@@ -19,7 +19,22 @@ form.addEventListener("submit", (e) => {
   checkPasswordsMatch(password, confirmPassword);
   checkFields([email, password, confirmPassword]);
 
-  if (validateFields([email, password, confirmPassword])) {
-    console.log("sending data....");
+  if (validateFields([email, password])) {
+    const url = "http://localhost:5000/auth/register";
+    const data = {
+      email: email.value,
+      password: password.value,
+      confirmPassword: confirmPassword.value
+    };
+    const fetchData = {
+      method: "POST",
+      body: JSON.stringify(data),
+      headers: {
+        "Content-type": "application/json"}
+    };
+    fetch(url, fetchData)
+      .then((res) => res.json())
+      .then((data) => console.log(data))
+      .catch((error) => console.log(error));
   }
 });

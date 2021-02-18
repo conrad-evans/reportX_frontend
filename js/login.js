@@ -11,6 +11,20 @@ form.addEventListener("submit", (e) => {
   checkFields([email, password]);
 
   if (validateFields([email, password])) {
-    console.log("sending data....");
+    const url = "http://localhost:5000/auth/login";
+    const data = {
+      email: email.value,
+      password: password.value,
+    };
+    const fetchData = {
+      method: "POST",
+      body: JSON.stringify(data),
+      headers: {
+        "Content-type": "application/json"}
+    };
+    fetch(url, fetchData)
+      .then((res) => res.json())
+      .then((data) => console.log(data))
+      .catch((error) => console.log(error));
   }
 });
