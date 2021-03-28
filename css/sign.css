@@ -1,0 +1,76 @@
+.container {
+  width: 80%;
+  margin: 0 auto;
+}
+.form {
+  width: 80%;
+  max-width: 40rem;
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  margin: 0 auto;
+  padding: 5rem;
+  border-radius: 8px;
+}
+.form-header{
+  margin-bottom: 3rem;
+}
+.form-header h1{
+  font-weight: 500;
+  font-size: 2rem;
+  text-align: center;
+}
+.form-control {
+  margin-bottom: 2rem;
+}
+.form-control:last-child {
+  margin-bottom: 0;
+}
+.form-control input {
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  width: 100%;
+  display: block;
+  height: 3rem;
+  padding: 16px;
+  border-radius: 4px;
+}
+.form-control label {
+  display: block;
+  text-transform: capitalize;
+  margin-bottom: 5px;
+  font-weight: 500;
+}
+small {
+  color: red;
+  visibility: hidden;
+}
+.form-control.success input {
+  border-color: green;
+}
+.form-control.error input {
+  border-color: red;
+}
+.form-control.error small {
+  visibility: visible;
+}
+.btn {
+  width: 100%;
+  font-weight: 600;
+}
+.info-div{
+  margin-top: 2rem;
+  text-align: center;
+}
+.info-div a{
+  text-decoration: underline;
+  color: purple;
+}
+
+@media (max-width: 480px) {
+  .container {
+    width: 90%;
+  }
+  .form {
+    width: 100%;
+    padding: 16px;
+    margin: 8px;
+  }
+}
